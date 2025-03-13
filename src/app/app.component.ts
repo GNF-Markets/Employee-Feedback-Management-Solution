@@ -1,12 +1,23 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common'; // ✅ Import CommonModule
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [CommonModule], // ✅ Add this here!
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Employee-Feedback-Management-Solution';
+  selectedForm: string = ''; 
+  selectedLanguages: string[] = [];
+
+  addLanguage() {
+    const languageSelect = document.getElementById('languageSelect') as HTMLSelectElement;
+    const selectedValue = languageSelect.value;
+
+    if (selectedValue && !this.selectedLanguages.includes(selectedValue)) {
+      this.selectedLanguages.push(selectedValue);
+    }
+  }
 }

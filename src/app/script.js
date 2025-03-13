@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         employeeBtn.classList.remove('active');
         hrForm.style.display = 'block';
         employeeForm.style.display = 'none';
+        console.log('HR button clicked');
     });
 
     // Employee button click handler

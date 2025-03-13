@@ -1,45 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup Page</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="signup-container">
-        <div class="button-container">
-            <button id="hrBtn" class="option-btn">HR</button>
-            <button id="employeeBtn" class="option-btn">Employee</button>
-        </div>
-
-        <form id="hrForm" class="signup-form" style="display: none;">
-            <input type="text" placeholder="Name" required>
-            <input type="text" placeholder="Surname" required>
-            <input type="email" placeholder="Email" required>
-            <input type="tel" placeholder="Phone Number" required>
-            <button type="submit">Sign Up</button>
-        </form>
-
-        <form id="employeeForm" class="signup-form" style="display: none;">
-            <input type="text" placeholder="Name" required>
-            <input type="text" placeholder="Surname" required>
-            <input type="text" placeholder="Interests/Hobbies" required>
-            <input type="text" placeholder="Role in Work" required>
-            <div class="languages-section">
-                <select id="languageSelect">
-                    <option value="">Select Programming Language</option>
-                    <option value="JavaScript">JavaScript</option>
-                    <option value="Python">Python</option>
-                    <option value="Java">Java</option>
-                    <option value="C++">C++</option>
-                </select>
-                <button type="button" id="addLanguage">Add Language</button>
-                <div id="selectedLanguages"></div>
-            </div>
-            <button type="submit">Sign Up</button>
-        </form>
+<div class="signup-container">
+    <div class="button-container">
+        <button 
+            (click)="selectedForm = 'hr'" 
+            [class.active]="selectedForm === 'hr'" 
+            class="option-btn">
+            HR
+        </button>
+        <button 
+            (click)="selectedForm = 'employee'" 
+            [class.active]="selectedForm === 'employee'" 
+            class="option-btn">
+            Employee
+        </button>
     </div>
-    <script src="script.js"></script>
-</body>
-</html>
+
+    <!-- HR Form -->
+    <form *ngIf="selectedForm === 'hr'" class="signup-form">
+        <input type="text" placeholder="Name" required>
+        <input type="text" placeholder="Surname" required>
+        <input type="email" placeholder="Email" required>
+        <input type="tel" placeholder="Phone Number" required>
+        <button type="submit">Sign Up</button>
+    </form>
+
+    <!-- Employee Form -->
+    <form *ngIf="selectedForm === 'employee'" class="signup-form">
+        <input type="text" placeholder="Name" required>
+        <input type="text" placeholder="Surname" required>
+        <input type="text" placeholder="Interests/Hobbies" required>
+        <input type="text" placeholder="Role in Work" required>
+        <div class="languages-section">
+            <select id="languageSelect">
+                <option value="">Select Programming Language</option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="Python">Python</option>
+                <option value="Java">Java</option>
+                <option value="C++">C++</option>
+            </select>
+            <button type="button" (click)="addLanguage()">Add Language</button>
+            <div *ngFor="let lang of selectedLanguages">{{ lang }}</div>
+        </div>
+        <button type="submit">Sign Up</button>
+    </form>
+</div>
