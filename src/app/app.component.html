@@ -1,37 +1,45 @@
 <div class="signup-container">
     <div class="button-container">
-      <button class="option-btn" [class.active]="activeForm === 'hr'" (click)="setActiveForm('hr')">HR</button>
-      <button class="option-btn" [class.active]="activeForm === 'employee'" (click)="setActiveForm('employee')">Employee</button>
+        <button 
+            (click)="selectedForm = 'hr'" 
+            [class.active]="selectedForm === 'hr'" 
+            class="option-btn">
+            HR
+        </button>
+        <button 
+            (click)="selectedForm = 'employee'" 
+            [class.active]="selectedForm === 'employee'" 
+            class="option-btn">
+            Employee
+        </button>
     </div>
-  
-    <form *ngIf="activeForm === 'hr'" id="hrForm" class="signup-form" (ngSubmit)="onSubmit('hr')">
-      <input type="text" placeholder="Name" [(ngModel)]="hrData.name" name="name" required>
-      <input type="text" placeholder="Surname" [(ngModel)]="hrData.surname" name="surname" required>
-      <input type="email" placeholder="Email" [(ngModel)]="hrData.email" name="email" required>
-      <input type="tel" placeholder="Phone Number" [(ngModel)]="hrData.phone" name="phone" required>
-      <button type="submit">Sign Up</button>
+
+    <!-- HR Form -->
+    <form *ngIf="selectedForm === 'hr'" class="signup-form">
+        <input type="text" placeholder="Name" required>
+        <input type="text" placeholder="Surname" required>
+        <input type="email" placeholder="Email" required>
+        <input type="tel" placeholder="Phone Number" required>
+        <button type="submit">Sign Up</button>
     </form>
-  
-    <form *ngIf="activeForm === 'employee'" id="employeeForm" class="signup-form" (ngSubmit)="onSubmit('employee')">
-      <input type="text" placeholder="Name" [(ngModel)]="employeeData.name" name="name" required>
-      <input type="text" placeholder="Surname" [(ngModel)]="employeeData.surname" name="surname" required>
-      <input type="text" placeholder="Interests/Hobbies" [(ngModel)]="employeeData.interests" name="interests" required>
-      <input type="text" placeholder="Role in Work" [(ngModel)]="employeeData.role" name="role" required>
-      <div class="languages-section">
-        <select id="languageSelect" [(ngModel)]="selectedLanguage" name="languageSelect">
-          <option value="">Select Programming Language</option>
-          <option value="JavaScript">JavaScript</option>
-          <option value="Python">Python</option>
-          <option value="Java">Java</option>
-          <option value="C++">C++</option>
-        </select>
-        <button type="button" (click)="addLanguage()" [disabled]="selectedLanguages.length >= 2">Add Language</button>
-        <div id="selectedLanguages">
-          <span *ngFor="let lang of selectedLanguages" class="language-tag">
-            {{ lang }} <span class="delete-lang" (click)="removeLanguage(lang)">×</span>
-          </span>
+
+    <!-- Employee Form -->
+    <form *ngIf="selectedForm === 'employee'" class="signup-form">
+        <input type="text" placeholder="Name" required>
+        <input type="text" placeholder="Surname" required>
+        <input type="text" placeholder="Interests/Hobbies" required>
+        <input type="text" placeholder="Role in Work" required>
+        <div class="languages-section">
+            <select id="languageSelect">
+                <option value="">Select Programming Language</option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="Python">Python</option>
+                <option value="Java">Java</option>
+                <option value="C++">C++</option>
+            </select>
+            <button type="button" (click)="addLanguage()">Add Language</button>
+            <div *ngFor="let lang of selectedLanguages">{{ lang }}</div>
         </div>
-      </div>
-      <button type="submit">Sign Up</button>
+        <button type="submit">Sign Up</button>
     </form>
-  </div>
+</div>
