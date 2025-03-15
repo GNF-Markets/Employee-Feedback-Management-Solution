@@ -30,15 +30,21 @@
         <input type="text" placeholder="Interests/Hobbies" required>
         <input type="text" placeholder="Role in Work" required>
         <div class="languages-section">
-            <select id="languageSelect">
+            <select id="languageSelect" [disabled]="selectedLanguages.length >= 2" >
                 <option value="">Select Programming Language</option>
                 <option value="JavaScript">JavaScript</option>
                 <option value="Python">Python</option>
                 <option value="Java">Java</option>
                 <option value="C++">C++</option>
             </select>
-            <button type="button" (click)="addLanguage()">Add Language</button>
-            <div *ngFor="let lang of selectedLanguages">{{ lang }}</div>
+            <button type="button" (click)="addLanguage()" [disabled]="selectedLanguages.length >= 2">Add Language</button>
+            <div class="selected-languages">
+                <div *ngFor="let lang of selectedLanguages" class="language-tag">
+                    {{ lang }}
+                    <span class="delete-btn" (click)="removeLanguage(lang)">x</span>
+                </div>
+            </div>
+           
         </div>
         <button type="submit">Sign Up</button>
     </form>

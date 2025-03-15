@@ -19,5 +19,9 @@ export class AppComponent {
     if (selectedValue && !this.selectedLanguages.includes(selectedValue)) {
       this.selectedLanguages.push(selectedValue);
     }
+   languageSelect.value = '';
+  }
+  removeLanguage(lang: string) {
+    this.selectedLanguages = this.selectedLanguages.filter(l => l !== lang);
   }
 }

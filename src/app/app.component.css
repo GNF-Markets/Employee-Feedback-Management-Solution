@@ -2,105 +2,116 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    justify-content: center;    /* Centers horizontally */
+    align-items: center;        /* Centers vertically */
+    min-height: 100vh;          /* Ensures full viewport height */
     background-color: #f0f0f0;
     font-family: Arial, sans-serif;
-  }
-  
-  .signup-container {
-    position: relative;
+}
+
+.signup-container {
+    position: absolute;
     background: white;
+    margin: 90px 500px;
     padding: 40px;
     border-radius: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     width: 400px;
-  }
-  
-  .signup-container::before,
-  .signup-container::after {
+}
+
+/* Keeping your pseudo-elements as they don’t affect centering */
+.signup-container::before,
+.signup-container::after {
     content: '';
     position: absolute;
-    width: 150%;
+    width: 30%;
     height: 2px;
     background: lightblue;
     top: 0;
-    left: -25%;
-  }
-  
-  .signup-container::before {
-    transform: rotate(45deg);
-  }
-  
-  .signup-container::after {
-    transform: rotate(-45deg);
-  }
-  
-  .button-container {
+    left: 5%;
+}
+
+.signup-container::before {
+    transform: rotate(90deg);
+}
+
+.signup-container::after {
+    transform: rotate(0deg);
+}
+
+/* Rest of your styles omitted for focus */
+.button-container {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
-  }
-  
-  .option-btn {
+}
+
+.option-btn {
     padding: 10px 20px;
     border: none;
     background: #ddd;
     cursor: pointer;
     transition: background 0.3s;
-  }
-  
-  .option-btn.active {
+}
+
+.option-btn.active {
     background: lightblue;
-  }
-  
-  .signup-form {
+}
+
+.signup-form {
     display: flex;
     flex-direction: column;
     gap: 15px;
-  }
-  
-  .signup-form input,
-  .signup-form select {
+}
+
+.signup-form input,
+.signup-form select {
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
-  }
-  
-  .signup-form button {
+}
+
+.signup-form button {
     padding: 10px;
     background: lightblue;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s;
-  }
-  
-  .signup-form button:hover {
+}
+
+.signup-form button:hover {
     background: #87ceeb;
-  }
-  
-  .languages-section {
+}
+
+.languages-section {
     margin: 15px 0;
-  }
-  
-  #selectedLanguages {
+}
+
+#selectedLanguages {
     margin-top: 10px;
-  }
-  
-  .language-tag {
+}
+
+.language-tag {
     display: inline-flex;
     align-items: center;
-    background: #f0f0f0;
+    background: #c0b7b7;
     padding: 5px 10px;
     margin: 5px;
     border-radius: 15px;
-  }
-  
-  .delete-lang {
+}
+.delete-btn {
+  cursor: pointer;
+  margin-left: 10px;
+  color: red;
+}
+.delete-btn:hover {
+  color: darkred;
+}
+
+.delete-lang {
     margin-left: 5px;
     color: red;
     cursor: pointer;
     font-weight: bold;
-  }
+}
