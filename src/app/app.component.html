@@ -1,51 +1,10 @@
-<div class="signup-container">
-    <div class="button-container">
-        <button 
-            (click)="selectedForm = 'hr'" 
-            [class.active]="selectedForm === 'hr'" 
-            class="option-btn">
-            HR
-        </button>
-        <button 
-            (click)="selectedForm = 'employee'" 
-            [class.active]="selectedForm === 'employee'" 
-            class="option-btn">
-            Employee
-        </button>
-    </div>
+<div>
+    <mat-toolbar color="primary" class="navbar">
+        <span class="navbar-brand">Task Management System</span>
+        <span class="spacer"></span>
+        <button mat-button routerLink="/signup" routerLinkActive="active">Register</button>
+        <button mat-button routerLink="/login" routerLinkActive="active">Login</button>
 
-    <!-- HR Form -->
-    <form *ngIf="selectedForm === 'hr'" class="signup-form">
-        <input type="text" placeholder="Name" required>
-        <input type="text" placeholder="Surname" required>
-        <input type="email" placeholder="Email" required>
-        <input type="tel" placeholder="Phone Number" required>
-        <button type="submit">Sign Up</button>
-    </form>
-
-    <!-- Employee Form -->
-    <form *ngIf="selectedForm === 'employee'" class="signup-form">
-        <input type="text" placeholder="Name" required>
-        <input type="text" placeholder="Surname" required>
-        <input type="text" placeholder="Interests/Hobbies" required>
-        <input type="text" placeholder="Role in Work" required>
-        <div class="languages-section">
-            <select id="languageSelect" [disabled]="selectedLanguages.length >= 2" >
-                <option value="">Select Programming Language</option>
-                <option value="JavaScript">JavaScript</option>
-                <option value="Python">Python</option>
-                <option value="Java">Java</option>
-                <option value="C++">C++</option>
-            </select>
-            <button type="button" (click)="addLanguage()" [disabled]="selectedLanguages.length >= 2">Add Language</button>
-            <div class="selected-languages">
-                <div *ngFor="let lang of selectedLanguages" class="language-tag">
-                    {{ lang }}
-                    <span class="delete-btn" (click)="removeLanguage(lang)">x</span>
-                </div>
-            </div>
-           
-        </div>
-        <button type="submit">Sign Up</button>
-    </form>
+    </mat-toolbar>
 </div>
+<router-outlet></router-outlet>

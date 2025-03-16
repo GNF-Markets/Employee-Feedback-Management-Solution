@@ -1,117 +1,30 @@
-body {
-    margin: 0;
-    padding: 0;
+.navbar {
     display: flex;
-    justify-content: center;    /* Centers horizontally */
-    align-items: center;        /* Centers vertically */
-    min-height: 100vh;          /* Ensures full viewport height */
-    background-color: #f0f0f0;
-    font-family: Arial, sans-serif;
-}
-
-.signup-container {
-    position: absolute;
-    background: white;
-    margin: 90px 500px;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    width: 400px;
-}
-
-/* Keeping your pseudo-elements as they don’t affect centering */
-.signup-container::before,
-.signup-container::after {
-    content: '';
-    position: absolute;
-    width: 30%;
-    height: 2px;
-    background: lightblue;
-    top: 0;
-    left: 5%;
-}
-
-.signup-container::before {
-    transform: rotate(90deg);
-}
-
-.signup-container::after {
-    transform: rotate(0deg);
-}
-
-/* Rest of your styles omitted for focus */
-.button-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-.option-btn {
-    padding: 10px 20px;
-    border: none;
-    background: #ddd;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-.option-btn.active {
-    background: lightblue;
-}
-
-.signup-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.signup-form input,
-.signup-form select {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-.signup-form button {
-    padding: 10px;
-    background: lightblue;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-.signup-form button:hover {
-    background: #87ceeb;
-}
-
-.languages-section {
-    margin: 15px 0;
-}
-
-#selectedLanguages {
-    margin-top: 10px;
-}
-
-.language-tag {
-    display: inline-flex;
     align-items: center;
-    background: #c0b7b7;
-    padding: 5px 10px;
-    margin: 5px;
-    border-radius: 15px;
-}
-.delete-btn {
-  cursor: pointer;
-  margin-left: 10px;
-  color: red;
-}
-.delete-btn:hover {
-  color: darkred;
+    padding: 0 16px;
+
 }
 
-.delete-lang {
-    margin-left: 5px;
-    color: red;
-    cursor: pointer;
-    font-weight: bold;
+.navbar-brand {
+    font-size: 20px;
+    font-weight: 600;
+    margin-right: 16px;
 }
+
+.spacer {
+    flex: 1;
+}
+
+button {
+    color: rgb(167, 153, 153);
+    text-transform: uppercase;
+    margin-left: 8px;
+}
+
+button.active {
+    font-weight: 600;
+}
+.custom-toolbar {
+    background-color: #ff0000;
+}
+
