@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { RouterModule, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../../services/auth/auth.service';
+import { StorageService } from '../../services/storage/storage.service';
 
 @Component({
   selector: 'app-login',
@@ -51,7 +52,18 @@ export class LoginComponent {
     this.authService.login(this.loginForm.value).subscribe((Response) => {
       console.log(Response);
       if(Response.userId != null){
-      this.snackbar.open('Login Successful', 'Close', {
+        const user = {
+          id: Response.userId,
+          role: Response.userRole
+        }
+        StorageService.saveUser(user);
+        StorageService.saveToken(Response.jwt);
+
+        if(StorageService.isAdminLoggedIn())
+          this.router.navigateByUrl('/admin/dashboard');
+        else if(StorageService.isEmployeeLoggedIn())
+          this.router.navigateByUrl('/employee/dashboard');
+        this.snackbar.open('Login Successful', 'Close', {
         duration: 5000});
       this.router.navigateByUrl('/dashboard');
       } else {
