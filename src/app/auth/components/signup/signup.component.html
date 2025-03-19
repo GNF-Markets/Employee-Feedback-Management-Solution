@@ -4,20 +4,20 @@
 
         <mat-card-content>
             <form [formGroup]="signupForm">
-
                 <mat-form-field appearance="outline">
                     <mat-label>Name</mat-label> 
                     <input matInput formControlName="name" placeholder="Name">
-
-                    <mat-error *ngIf="signupForm.get('name').invalid && signupForm.get('name').touched">
+                    
+                    <mat-error [hidden]="signupForm.get('name')?.valid || !signupForm.get('name')?.touched">
                         Please enter a valid name.
                     </mat-error>
                 </mat-form-field>
+
                 <mat-form-field appearance="outline">
                     <mat-label>Email</mat-label>
                     <input matInput formControlName="email" placeholder="email">
-
-                    <mat-error *ngIf="signupForm.get('email').invalid && signupForm.get('email').touched">
+                    
+                    <mat-error [hidden]="signupForm.get('email')?.valid || !signupForm.get('email')?.touched">
                         Please enter a valid email.
                     </mat-error>
                 </mat-form-field>
@@ -25,27 +25,27 @@
                 <mat-form-field appearance="outline">
                     <mat-label>Password</mat-label>
                     <input matInput formControlName="password" placeholder="password" type="password">
-
-                    <mat-error *ngIf="signupForm.get('password').invalid && signupForm.get('password').touched">
+                    
+                    <mat-error [hidden]="signupForm.get('password')?.valid || !signupForm.get('password')?.touched">
                         Please enter a valid password.
                     </mat-error>
                 </mat-form-field>
 
                 <mat-form-field appearance="outline">
                     <mat-label>Confirm Password</mat-label>
-                    <input matInput type="{{ hidePassword ? 'password' : 'text' }}" formControlName="confirmPassword" 
+                    <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="confirmPassword" 
                     placeholder="Password" required>
-
+                    
                     <button mat-icon-button matSuffix (click)="togglePasswordVisibility()">
                         <mat-icon>{{ hidePassword ? 'visibility' : 'visibility_off' }}</mat-icon>
                     </button>
-                    <mat-error *ngIf="signupForm.get('confirmPassword').invalid && signupForm.get('confirmPassword').touched">
+
+                    <mat-error [hidden]="signupForm.get('confirmPassword')?.valid || !signupForm.get('confirmPassword')?.touched">
                         Please enter a valid password.
                     </mat-error>   
                 </mat-form-field>
 
                 <button mat-raised-button color="primary" type="submit" [disabled]="signupForm.invalid" (click)="onSubmit()">Sign Up</button>
-
             </form>
         </mat-card-content>
     </mat-card>

@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common'; // ✅ Import CommonModule
+import { CommonModule } from '@angular/common'; 
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { LoginComponent } from './auth/components/login/login.component';
-import { SignupComponent } from './auth/components/signup/signup.component';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { DemoAngularMaterialModule } from './DemoAngularMaterialModule';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @Component({
@@ -17,11 +16,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RouterLink,
     RouterLinkActive,
     DemoAngularMaterialModule,
-    LoginComponent,
-    SignupComponent,
     ReactiveFormsModule,
-    FormsModule,  // ✅ Add this here!
-
+    FormsModule,
+    MatButtonModule,
   ], // ✅ Add this here!
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
@@ -30,6 +27,7 @@ export class AppComponent {
 
   selectedForm: string = ''; 
   selectedLanguages: string[] = [];
+  title = 'Employee-Feedback-Management-Solution';
 
   addLanguage() {
     const languageSelect = document.getElementById('languageSelect') as HTMLSelectElement;
