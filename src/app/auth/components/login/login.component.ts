@@ -53,7 +53,7 @@ export class LoginComponent {
       if(Response.userId != null){
       this.snackbar.open('Login Successful', 'Close', {
         duration: 5000});
-      this.router.navigateByUrl('/employee');
+      this.router.navigateByUrl('/dashboard');
       } else {
         this.snackbar.open('Invalid credentials', 'Close', {
           duration: 5000, panelClass: 'error-snackbar'})
