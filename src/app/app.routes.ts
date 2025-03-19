@@ -10,5 +10,5 @@ export const routes: Routes = [
     { path: "signup", component: SignupComponent },
     { path: "admin", loadChildren: () => import('./modules/admin/admin.module').then(e => e.AdminModule) },
     { path: "employee", loadChildren: () => import('./modules/employee/employee.module').then(e => e.EmployeeModule) },
-    
+        
 ];
