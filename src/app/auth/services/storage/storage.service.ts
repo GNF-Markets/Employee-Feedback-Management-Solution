@@ -10,9 +10,9 @@ export class StorageService {
 
   constructor() { }
 
-  static saveToken(user: string): void {
+  static saveToken(token: string): void {
     window.localStorage.removeItem(TOKEN);
-    window.localStorage.setItem(USER, JSON.stringify(user));
+    window.localStorage.setItem(TOKEN, token);
 
   }
   static saveUser(user: any): void {
