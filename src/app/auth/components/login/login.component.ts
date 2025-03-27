@@ -51,26 +51,38 @@ export class LoginComponent {
   
     this.authService.login(this.loginForm.value).subscribe((Response) => {
       console.log(Response);
-      if(Response.userId != null){
+      if (Response.userId != null) {
         const user = {
           id: Response.userId,
           role: Response.userRole
-        }
+        };
         StorageService.saveUser(user);
         StorageService.saveToken(Response.jwt);
-
-        if(StorageService.isAdminLoggedIn())
-          this.router.navigateByUrl('/admin/dashboard');
-        else if(StorageService.isEmployeeLoggedIn())
-          this.router.navigateByUrl('/employee/dashboard');
-        this.snackbar.open('Login Successful', 'Close', {
-        duration: 5000});
-      this.router.navigateByUrl('/dashboard');
+  
+        let targetRoute = '';
+  
+        if (StorageService.isAdminLoggedIn()) {
+          targetRoute = '/admin/dashboard';
+        } else if (StorageService.isEmployeeLoggedIn()) {
+          targetRoute = '/employee/dashboard';
+        } else {
+          this.snackbar.open('Invalid role', 'Close', {
+            duration: 5000,
+            panelClass: 'error-snackbar'
+          });
+          return; // Stop further execution if role is invalid
+        }
+  
+        this.snackbar.open('Login Successful', 'Close', { duration: 5000 });
+        this.router.navigateByUrl(targetRoute); // Navigate only once
       } else {
         this.snackbar.open('Invalid credentials', 'Close', {
-          duration: 5000, panelClass: 'error-snackbar'})
+          duration: 5000,
+          panelClass: 'error-snackbar'
+        });
       }
     });
   }
+  
 
 }

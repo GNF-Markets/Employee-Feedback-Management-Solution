@@ -1,29 +1,32 @@
-<div *ngIf="!isEmployeeLoggedIn && !isAdminLoggedIn">
+<!-- Show when NOT logged in as Admin or Employee -->
+<div *ngIf="!isAdminLoggedIn && !isEmployeeLoggedIn">
     <mat-toolbar color="primary" class="navbar">
         <span class="navbar-brand">Task Management System</span>
         <span class="spacer"></span>
         <button mat-button routerLink="/signup" routerLinkActive="active">Register</button>
         <button mat-button routerLink="/login" routerLinkActive="active">Login</button>
-
     </mat-toolbar>
 </div>
-<div *ngIf="!isAdminLoggedIn">
+
+<!-- Show ONLY if Admin is logged in -->
+<div *ngIf="isAdminLoggedIn">
     <mat-toolbar color="primary" class="navbar">
         <span class="navbar-brand">Admin</span>
         <span class="spacer"></span>
         <button mat-button routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</button>
         <button mat-button routerLink="/admin/task" routerLinkActive="active">Post Task</button>
-        <button (click)="logout()" routerLinkActive="active">Logout</button>
-
+        <button mat-button (click)="logout()">Logout</button>
     </mat-toolbar>
 </div>
-<div *ngIf="!isEmployeeLoggedIn">
+
+<!-- Show ONLY if Employee is logged in -->
+<div *ngIf="isEmployeeLoggedIn">
     <mat-toolbar color="primary" class="navbar">
         <span class="navbar-brand">Employee</span>
         <span class="spacer"></span>
-        <button mat-button routerLink="/employee/Dashboard" routerLinkActive="">Dashboard</button>
-        <button mat-button (click)="logout()" routerLinkActive="active">Logout</button>
-
+        <button mat-button routerLink="/employee/dashboard" routerLinkActive="active">Dashboard</button>
+        <button mat-button (click)="logout()">Logout</button>
     </mat-toolbar>
 </div>
+
 <router-outlet></router-outlet>

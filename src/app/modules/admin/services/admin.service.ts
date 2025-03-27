@@ -2,8 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule if not already imported
-import { Observable } from 'rxjs';
-import { StorageService } from 'src/app/auth/services/storage/storage.service'; // Adjust the path as needed
+import { Observable } from 'rxjs'; // Adjust the path as needed
+import { StorageService } from '../../../auth/services/storage/storage.service';
 
 const BASIC_URL = 'http://localhost:8080';
 @Injectable({
