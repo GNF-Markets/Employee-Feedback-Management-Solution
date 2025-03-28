@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule if not already imported
-import { Observable } from 'rxjs'; // Adjust the path as needed
+import { Observable } from 'rxjs';
 import { StorageService } from '../../../auth/services/storage/storage.service';
 
 const BASIC_URL = 'http://localhost:8080/';
@@ -18,7 +18,11 @@ export class AdminService {
     headers: this.createAuthorationHeader(),
    });
   }
-
+  postTask(taskDTO: any): Observable<any>{
+    return this.http.post(BASIC_URL + 'apo/admin/tasks', taskDTO, {
+    headers: this.createAuthorationHeader()
+   });
+  }
   private createAuthorationHeader(): HttpHeaders {
     return new HttpHeaders().set(
       'Authorization', 'Bearer ' + StorageService.getToken()
