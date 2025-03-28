@@ -3,6 +3,10 @@ import { AdminService } from '../../services/admin.service';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDatepicker, MatDatepickerToggle } from '@angular/material/datepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatOption } from '@angular/material/core';
+
 
 
 @Component({
@@ -12,7 +16,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     MatLabel,
-    MatError
+    MatError, 
+    MatDatepicker,
+    MatDatepickerToggle,
+  MatDatepickerModule ,
+  MatOption
     
   ],
   templateUrl: './post-task.component.html',
@@ -39,6 +47,11 @@ export class PostTaskComponent {
       console.log(response);
     })
   
+  }
+
+  postTask(){
+    console.log(this.taskForm.value);
+    
   }
 }
 
