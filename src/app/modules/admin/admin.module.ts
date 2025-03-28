@@ -6,6 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
+
+
 @NgModule({
   declarations: [],
   imports: [
@@ -13,7 +15,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     AdminRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-   
+
+ 
   ]
 })
 export class AdminModule { }
