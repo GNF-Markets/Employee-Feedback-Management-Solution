@@ -9,6 +9,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatOption } from '@angular/material/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 
@@ -24,7 +25,8 @@ import { CommonModule } from '@angular/common';
     MatDatepicker,
     MatDatepickerToggle,
   MatDatepickerModule ,
-  MatOption
+  MatOption, 
+  HttpClientModule
     
   ],
   templateUrl: './post-task.component.html',

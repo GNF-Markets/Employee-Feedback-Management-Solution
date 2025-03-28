@@ -1,7 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
-import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule if not already imported
 import { Observable } from 'rxjs';
 import { StorageService } from '../../../auth/services/storage/storage.service';
 
