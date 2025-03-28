@@ -8,12 +8,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatOption } from '@angular/material/core';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 
 
 @Component({
   selector: 'app-post-task',
   imports: [
+    CommonModule,
    MatFormField,
     FormsModule,
     ReactiveFormsModule,
