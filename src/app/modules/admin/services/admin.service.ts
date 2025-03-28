@@ -19,7 +19,7 @@ export class AdminService {
    });
   }
   postTask(taskDTO: any): Observable<any>{
-    return this.http.post(BASIC_URL + 'apo/admin/tasks', taskDTO, {
+    return this.http.post(BASIC_URL + 'api/admin/tasks', taskDTO, {
     headers: this.createAuthorationHeader()
    });
   }

@@ -63,7 +63,8 @@
               "buildTarget": "Employee-Feedback-Management-Solution:build:production"
             },
             "development": {
-              "buildTarget": "Employee-Feedback-Management-Solution:build:development"
+              "buildTarget": "Employee-Feedback-Management-Solution:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
