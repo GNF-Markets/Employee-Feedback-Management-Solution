@@ -4,8 +4,10 @@ import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepicker, MatDatepickerToggle } from '@angular/material/datepicker';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatOption } from '@angular/material/core';
+import { Router } from '@angular/router';
 
 
 
@@ -32,7 +34,10 @@ export class PostTaskComponent {
   listofEmployees : any[] = [];
   listofPriorities : any[] = ["LOW", "MEDIUM", "HIGH"];
   
-  constructor(private adminService: AdminService, private fb: FormBuilder) { 
+  constructor(private adminService: AdminService, private fb: FormBuilder,
+    private snackBar: MatSnackBar,
+    private router: Router,  
+  ) { 
     this.getUsers();
     this.taskForm = this.fb.group({
     employeeId:[null, [Validators.required]],
@@ -51,6 +56,17 @@ export class PostTaskComponent {
 
   postTask(){
     console.log(this.taskForm.value);
+    this.adminService.postTask(this.taskForm.value).subscribe((response) => {
+     if(response.id != null){
+       this.snackBar.open("Task posted successfully", "OK", {
+         duration: 5000})
+         this.router.navigate(['/admin/dashboard']);
+     }else{
+       this.snackBar.open("Something went wrong", "Error", {
+         duration: 5000})
+     }
+
+    })
     
   }
 }
