@@ -1,1 +1,15 @@
-<p>post-task works!</p>
+<h2>Post Task</h2>
+
+ <form [formGroup]="taskForm">
+    <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Title</mat-label>
+        <input matInput type="text" placeholder="Title" formControlName="title" required/>
+        <mat-error *ngIf="taskForm.get('title')?.hasError('required')">This input is required!</mat-error>
+    </mat-form-field>
+
+
+
+
+
+
+ </form>
